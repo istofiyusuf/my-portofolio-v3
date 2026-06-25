@@ -2,11 +2,11 @@
 
 <div align="center">
 
-![Portfolio](public/profile/profile.webp)
+<img src="public/profile/profile.webp" alt="Portfolio" width="120" height="120" style="border-radius: 50%; object-fit: cover; border: 2px solid #333;" />
 
 **Fullstack Developer & Creative Engineer Portfolio**
 
-[![Live Demo](https://img.shields.io/badge/LIVE-DEMO-black?style=for-the-badge)](https://my-portofolio.vercel.app)
+[![Live Demo](https://img.shields.io/badge/LIVE-DEMO-black?style=for-the-badge)](https://istofiyusuf.dpdns.org)
 [![GitHub](https://img.shields.io/badge/GITHUB-REPO-black?style=for-the-badge)](https://github.com/istofiyusuf/portfolio)
 
 </div>
