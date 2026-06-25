@@ -1,0 +1,233 @@
+.projects {
+  position: relative;
+  z-index: 1;
+  padding: 60px 0 0;
+}
+
+.container {
+  padding: 0 20px;
+}
+
+/* Header */
+.header {
+  margin-bottom: 24px;
+}
+
+.sectionTag {
+  font-family: var(--font-primary);
+  font-size: 0.65rem;
+  color: #555;
+  letter-spacing: 0.25em;
+  margin-bottom: 10px;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.bracket {
+  color: #444;
+  font-weight: 400;
+}
+
+/* Status Row */
+.statusRow {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.statusItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.6rem;
+  color: #666;
+  letter-spacing: 0.1em;
+}
+
+.statusIconLive {
+  color: #999;
+  font-size: 0.75rem;
+}
+.statusIconSoon {
+  color: #555;
+  font-size: 0.75rem;
+}
+
+.statusCount {
+  font-size: 0.55rem;
+  color: #444;
+}
+
+/* List */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Card */
+.card {
+  background: #050505;
+  border: 1px solid #1a1a1a;
+  overflow: hidden;
+}
+
+.card.comingSoon {
+  opacity: 0.7;
+}
+
+.cardImage {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0a0a0a, #050510, #0a0a0a);
+  display: flex;
+  align-items: flex-end;
+  padding: 14px;
+  position: relative;
+}
+
+.statusBadge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  background: #0a0a0a;
+  border: 1px solid #222;
+  color: #777;
+}
+
+.imageOverlay {
+  position: relative;
+  z-index: 1;
+}
+
+.projectId {
+  font-size: 0.5rem;
+  color: #555;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.projectTitle {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Info */
+.cardInfo {
+  padding: 16px;
+}
+
+.cardCategory {
+  font-size: 0.55rem;
+  color: #555;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.cardDesc {
+  font-size: 0.75rem;
+  color: #888;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.cardTech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+.techTag {
+  padding: 2px 7px;
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  font-size: 0.55rem;
+  color: #777;
+  font-family: var(--font-primary);
+}
+
+.cardLinks {
+  display: flex;
+  gap: 8px;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+  background: #ffffff;
+  color: #000;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  font-family: var(--font-primary);
+}
+
+.actionBtnOutline {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+  border: 1px solid #333;
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  font-family: var(--font-primary);
+}
+
+.comingSoonText {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.6rem;
+  color: #666;
+  padding: 8px 14px;
+  border: 1px solid #222;
+}
+
+.sectionDivider {
+  margin: 50px 20px 0;
+  height: 1px;
+  background: #1a1a1a;
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.gradientBg {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0a0a0a 0%, #050510 50%, #0a0a0a 100%);
+}

@@ -1,0 +1,88 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Panel kiri - geser dari kiri */
+.panelLeft {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: #050505;
+  border-right: 1px solid #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+/* Panel kanan - geser dari kanan */
+.panelRight {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: #050505;
+  border-left: 1px solid #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 20px;
+}
+
+/* Bracket di panel */
+.panelContent {
+  display: flex;
+  align-items: center;
+}
+
+.panelBracket {
+  font-family: var(--font-display);
+  font-size: 8rem;
+  font-weight: 200;
+  color: #1a1a1a;
+  user-select: none;
+}
+
+/* Teks tengah (nama section) */
+.centerText {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.navLabel {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .panelBracket {
+    font-size: 4rem;
+  }
+
+  .navLabel {
+    font-size: 1.5rem;
+  }
+
+  .panelLeft {
+    padding-right: 10px;
+  }
+
+  .panelRight {
+    padding-left: 10px;
+  }
+}

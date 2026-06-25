@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: #666;
+  white-space: nowrap;
+}
+
+.bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5px;
+  height: 12px;
+}
+
+.bar {
+  width: 2px;
+  background: #ffffff;
+  transition: height 0.15s ease;
+}

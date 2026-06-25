@@ -1,0 +1,163 @@
+.contact {
+  position: relative;
+  z-index: 1;
+  padding: 60px 0;
+}
+
+.container {
+  padding: 0 20px;
+}
+
+.header {
+  margin-bottom: 28px;
+  text-align: center;
+}
+.sectionTag {
+  font-size: 0.65rem;
+  color: #555;
+  letter-spacing: 0.25em;
+  margin-bottom: 10px;
+}
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.bracket {
+  color: #444;
+  font-weight: 400;
+}
+.sectionDesc {
+  font-size: 0.78rem;
+  color: #777;
+}
+
+/* WA Button */
+.waBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  background: #ffffff;
+  color: #000;
+  text-decoration: none;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  font-family: var(--font-primary);
+  margin-bottom: 16px;
+}
+
+/* Form */
+.formCard {
+  background: #050505;
+  border: 1px solid #1a1a1a;
+  padding: 18px;
+  margin-bottom: 12px;
+}
+.formGroup {
+  margin-bottom: 14px;
+}
+.formGroup label {
+  display: block;
+  font-size: 0.55rem;
+  color: #555;
+  letter-spacing: 0.15em;
+  margin-bottom: 4px;
+}
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  padding: 10px 14px;
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  color: #fff;
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  outline: none;
+}
+.formGroup textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+.submitBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 12px;
+  background: #ffffff;
+  color: #000;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  font-family: var(--font-primary);
+  border: none;
+  cursor: pointer;
+}
+.success {
+  text-align: center;
+  padding: 20px 0;
+}
+.successIcon {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 12px;
+}
+.success h3 {
+  font-size: 0.9rem;
+  color: #fff;
+  margin-bottom: 14px;
+}
+.sendAgain {
+  font-size: 0.65rem;
+  color: #888;
+  background: none;
+  border: none;
+}
+
+/* Email */
+.emailCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  background: #050505;
+  border: 1px solid #1a1a1a;
+  font-size: 0.7rem;
+  color: #bbb;
+  margin-bottom: 16px;
+}
+.emailCard button {
+  margin-left: auto;
+  color: #555;
+  background: none;
+  border: none;
+  font-size: 0.85rem;
+}
+
+/* Social */
+.socialGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+.socialCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 8px;
+  background: #050505;
+  border: 1px solid #1a1a1a;
+  text-decoration: none;
+  font-size: 0.5rem;
+  color: #888;
+}
+.socialCard svg {
+  font-size: 1rem;
+  color: #fff;
+}

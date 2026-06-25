@@ -1,0 +1,234 @@
+.hero {
+  padding-top: 80px;
+  padding-bottom: 40px;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  width: 100%;
+  padding: 0 20px;
+}
+
+/* ============ FOTO PROFIL ============ */
+.photoSection {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.imageWrapper {
+  text-align: center;
+}
+
+.imageFrame {
+  position: relative;
+  width: 200px;
+  height: 240px;
+  margin: 0 auto 18px;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background: #0a0a0a;
+  border: 1px solid #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* HAPUS photoOverlay - tidak digunakan */
+/* HAPUS fallbackInitials - tidak digunakan */
+
+.frameBorder {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: -10px;
+  bottom: -10px;
+  border: 1px solid #444;
+  z-index: 0;
+  animation: framePulse 3s ease-in-out infinite;
+}
+
+@keyframes framePulse {
+  0%,
+  100% {
+    border-color: #333;
+  }
+  50% {
+    border-color: #555;
+  }
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: #666;
+  padding: 8px 16px;
+  border: 1px solid #222;
+}
+
+.statusDot {
+  width: 5px;
+  height: 5px;
+  background: #ffffff;
+  border-radius: 50%;
+  animation: dotPulse 2s infinite;
+}
+
+@keyframes dotPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* ============ TEKS ============ */
+.textSection {
+  text-align: center;
+}
+
+.tag {
+  font-size: 0.65rem;
+  color: #555;
+  letter-spacing: 0.2em;
+  margin-bottom: 12px;
+}
+
+/* TITLE - Typing effect di sini */
+.title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 16px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.typingText {
+  font-family: var(--font-primary);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.cursor {
+  color: #ffffff;
+  font-weight: 300;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+.cursorVisible {
+  opacity: 1;
+}
+
+.desc {
+  font-size: 0.85rem;
+  color: #777;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+/* CTA */
+.cta {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.btn {
+  padding: 12px 20px;
+  background: #ffffff;
+  color: #000000;
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  font-family: var(--font-primary);
+  transition: all 0.2s;
+}
+
+.btn:active {
+  background: #cccccc;
+  transform: scale(0.97);
+}
+
+.btnOutline {
+  padding: 12px 20px;
+  border: 1px solid #333;
+  color: #ffffff;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  font-family: var(--font-primary);
+  transition: all 0.2s;
+}
+
+.btnOutline:active {
+  border-color: #ffffff;
+}
+
+.code {
+  font-family: var(--font-primary);
+  font-size: 0.65rem;
+  color: #444;
+  line-height: 1.7;
+  border-left: 1px solid #222;
+  padding-left: 12px;
+  white-space: pre-wrap;
+  max-width: 280px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* ============ SWIPE INDICATOR ============ */
+.swipeIndicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.swipeText {
+  font-size: 0.5rem;
+  color: #555;
+  letter-spacing: 0.3em;
+}
+
+.swipeLine {
+  width: 1px;
+  height: 30px;
+  background: linear-gradient(to bottom, #ffffff, transparent);
+}

@@ -1,0 +1,181 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  transition: all var(--transition-base);
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.scrolled {
+  background: rgba(0, 0, 0, 0.95);
+  border-bottom: 1px solid #333;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 8px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logoImage {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
+}
+
+.audioSection {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.menuBtn {
+  font-family: var(--font-primary);
+  font-size: 1.15rem;
+  color: #ffffff;
+  padding: 4px 8px;
+  flex-shrink: 0;
+}
+
+/* ============ MENU OVERLAY ============ */
+.menu {
+  position: fixed;
+  inset: 0;
+  background: #000000;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+/* Logo di dalam menu */
+.menuLogo {
+  margin-bottom: 8px;
+}
+
+.menuLogoImage {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Garis pemisah */
+.menuDivider {
+  width: 40px;
+  height: 1px;
+  background: #333;
+  margin-bottom: 8px;
+}
+
+/* Navigation items */
+.menuLink {
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: opacity 0.2s;
+}
+
+.menuLink:active {
+  opacity: 0.6;
+}
+
+.menuNumber {
+  font-size: 0.7rem;
+  color: #555;
+  font-weight: 400;
+  min-width: 24px;
+  text-align: right;
+}
+
+/* ============ SPLIT SCREEN TRANSITION ============ */
+.transitionOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panelLeft {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: #050505;
+  border-right: 1px solid #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 12px;
+}
+
+.panelRight {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: #050505;
+  border-left: 1px solid #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 12px;
+}
+
+.panelBracket {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 200;
+  color: #1a1a1a;
+  user-select: none;
+}
+
+.centerText {
+  position: relative;
+  z-index: 1;
+}
+
+.navLabel {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+}
