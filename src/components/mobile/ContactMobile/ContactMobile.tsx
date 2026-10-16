@@ -106,7 +106,7 @@ export default function ContactMobile() {
                   name="name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="John Doe"
+                  placeholder={t({ id: 'Nama Kamu', en: 'Your Name' })}
                   required
                 />
               </div>
@@ -117,7 +117,7 @@ export default function ContactMobile() {
                   name="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="john@email.com"
+                  placeholder={t({ id: 'Email Kamu', en: 'Your Email' })}
                   required
                 />
               </div>

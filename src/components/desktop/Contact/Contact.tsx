@@ -192,7 +192,7 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleChange}
                         className={styles.input}
-                        placeholder="John Doe"
+                        placeholder={t({ id: 'Nama Kamu', en: 'Your Name' })}
                         required
                       />
                     </div>
@@ -207,7 +207,7 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleChange}
                         className={styles.input}
-                        placeholder="john@email.com"
+                        placeholder={t({ id: 'Email Kamu', en: 'Your Email' })}
                         required
                       />
                     </div>
