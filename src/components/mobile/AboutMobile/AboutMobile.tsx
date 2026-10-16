@@ -2,8 +2,10 @@ import { profile, timeline } from '@/data/profile';
 import { motion } from 'framer-motion';
 import { FiCode, FiDownload, FiLayers, FiMail, FiMapPin } from 'react-icons/fi';
 import styles from './AboutMobile.module.css';
+import { useLanguage } from '@/hooks/LanguageContext';
 
 export default function AboutMobile() {
+  const { t } = useLanguage();
   return (
     <section id="about" className={styles.about}>
       <div className={styles.container}>
@@ -15,9 +17,9 @@ export default function AboutMobile() {
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.5 }}
         >
-          <p className={styles.sectionTag}>02. ABOUT</p>
+          <p className={styles.sectionTag}>02. {t({ id: 'TENTANG', en: 'ABOUT' })}</p>
           <h2 className={styles.sectionTitle}>
-            <span className={styles.bracket}>{'/*'}</span> The Developer{' '}
+            <span className={styles.bracket}>{'/*'}</span> {t({ id: 'Pengembang', en: 'The Developer' })}{' '}
             <span className={styles.bracket}>{'*/'}</span>
           </h2>
         </motion.div>
@@ -32,12 +34,14 @@ export default function AboutMobile() {
         >
           <div className={styles.cardHeader}>
             <span className={styles.cardDot} />
-            <span className={styles.cardLabel}>BIOGRAPHY</span>
+            <span className={styles.cardLabel}>{t({ id: 'BIOGRAFI', en: 'BIOGRAPHY' })}</span>
           </div>
-          <p className={styles.bioText}>{profile.description}</p>
+          <p className={styles.bioText}>{t(profile.description)}</p>
           <p className={styles.bioText}>
-            With a strong foundation in modern web technologies and a passion for clean
-            architecture, I transform complex requirements into elegant, performant solutions.
+            {t({
+              id: 'Dengan fondasi kuat dalam teknologi web modern dan hasrat untuk arsitektur yang bersih, saya mengubah persyaratan kompleks menjadi solusi yang elegan dan performan.',
+              en: 'With a strong foundation in modern web technologies and a passion for clean architecture, I transform complex requirements into elegant, performant solutions.',
+            })}
           </p>
         </motion.div>
 
@@ -52,7 +56,7 @@ export default function AboutMobile() {
           <div className={styles.infoCard}>
             <FiMapPin className={styles.infoIcon} />
             <div>
-              <span className={styles.infoLabel}>LOCATION</span>
+              <span className={styles.infoLabel}>{t({ id: 'LOKASI', en: 'LOCATION' })}</span>
               <span className={styles.infoValue}>{profile.location}</span>
             </div>
           </div>
@@ -68,15 +72,15 @@ export default function AboutMobile() {
           <div className={styles.infoCard}>
             <FiCode className={styles.infoIcon} />
             <div>
-              <span className={styles.infoLabel}>EXPERIENCE</span>
-              <span className={styles.infoValue}>5+ Years</span>
+              <span className={styles.infoLabel}>{t({ id: 'PENGALAMAN', en: 'EXPERIENCE' })}</span>
+              <span className={styles.infoValue}>5+ {t({ id: 'Tahun', en: 'Years' })}</span>
             </div>
           </div>
           <div className={styles.infoCard}>
             <FiLayers className={styles.infoIcon} />
             <div>
-              <span className={styles.infoLabel}>PROJECTS</span>
-              <span className={styles.infoValue}>20+ Completed</span>
+              <span className={styles.infoLabel}>{t({ id: 'PROYEK', en: 'PROJECTS' })}</span>
+              <span className={styles.infoValue}>20+ {t({ id: 'Selesai', en: 'Completed' })}</span>
             </div>
           </div>
         </motion.div>
@@ -90,7 +94,7 @@ export default function AboutMobile() {
         >
           <a href={profile.resumeUrl} className={styles.resumeBtn} download>
             <FiDownload />
-            <span>DOWNLOAD RESUME</span>
+            <span>{t({ id: 'UNDUH RESUME', en: 'DOWNLOAD RESUME' })}</span>
             <span className={styles.btnArrow}>{'->'}</span>
           </a>
         </motion.div>
@@ -105,7 +109,7 @@ export default function AboutMobile() {
         >
           <div className={styles.cardHeader}>
             <span className={styles.cardDot} />
-            <span className={styles.cardLabel}>EXPERIENCE</span>
+            <span className={styles.cardLabel}>{t({ id: 'PENGALAMAN', en: 'EXPERIENCE' })}</span>
           </div>
 
           <div className={styles.timeline}>
@@ -118,9 +122,9 @@ export default function AboutMobile() {
 
                 <div className={styles.timelineContent}>
                   <span className={styles.timelineYear}>{item.year}</span>
-                  <h4 className={styles.timelineTitle}>{item.title}</h4>
+                  <h4 className={styles.timelineTitle}>{t(item.title)}</h4>
                   <span className={styles.timelineCompany}>@ {item.company}</span>
-                  <p className={styles.timelineDesc}>{item.description}</p>
+                  <p className={styles.timelineDesc}>{t(item.description)}</p>
                 </div>
               </div>
             ))}
@@ -137,7 +141,10 @@ export default function AboutMobile() {
         >
           <span className={styles.quoteIcon}>{'"'}</span>
           <p className={styles.quoteText}>
-            Clean code always looks like it was written by someone who cares.
+            {t({
+              id: 'Kode yang bersih selalu terlihat seperti ditulis oleh seseorang yang peduli.',
+              en: 'Clean code always looks like it was written by someone who cares.',
+            })}
           </p>
           <div className={styles.quoteLine} />
         </motion.div>

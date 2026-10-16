@@ -2,8 +2,10 @@ import { projects } from '@/data/projects';
 import { motion } from 'framer-motion';
 import { FiCheckCircle, FiClock, FiExternalLink, FiGithub } from 'react-icons/fi';
 import styles from './ProjectsMobile.module.css';
+import { useLanguage } from '@/hooks/LanguageContext';
 
 export default function ProjectsMobile() {
+  const { t } = useLanguage();
   return (
     <section id="projects" className={styles.projects}>
       <div className={styles.container}>
@@ -15,9 +17,9 @@ export default function ProjectsMobile() {
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.5 }}
         >
-          <p className={styles.sectionTag}>04. PROJECTS</p>
+          <p className={styles.sectionTag}>04. {t({ id: 'PROYEK', en: 'PROJECTS' })}</p>
           <h2 className={styles.sectionTitle}>
-            <span className={styles.bracket}>{'/*'}</span> Featured Works{' '}
+            <span className={styles.bracket}>{'/*'}</span> {t({ id: 'Karya Pilihan', en: 'Featured Works' })}{' '}
             <span className={styles.bracket}>{'*/'}</span>
           </h2>
         </motion.div>
@@ -33,7 +35,7 @@ export default function ProjectsMobile() {
           </div>
           <div className={styles.statusItem}>
             <FiClock className={styles.statusIconSoon} />
-            <span>COMING SOON</span>
+            <span>{t({ id: 'SEGERA HADIR', en: 'COMING SOON' })}</span>
             <span className={styles.statusCount}>
               {projects.filter((p) => p.status === 'coming_soon').length}
             </span>
@@ -72,7 +74,7 @@ export default function ProjectsMobile() {
                       </>
                     ) : (
                       <>
-                        <FiClock /> COMING SOON
+                        <FiClock /> {t({ id: 'SEGERA', en: 'SOON' })}
                       </>
                     )}
                   </div>
@@ -87,8 +89,8 @@ export default function ProjectsMobile() {
 
               {/* Info */}
               <div className={styles.cardInfo}>
-                <span className={styles.cardCategory}>{project.category}</span>
-                <p className={styles.cardDesc}>{project.description}</p>
+                <span className={styles.cardCategory}>{t(project.category)}</span>
+                <p className={styles.cardDesc}>{t(project.description)}</p>
                 <div className={styles.cardTech}>
                   {project.technologies.slice(0, 4).map((tech) => (
                     <span key={tech} className={styles.techTag}>
@@ -104,7 +106,7 @@ export default function ProjectsMobile() {
                       rel="noopener noreferrer"
                       className={styles.actionBtn}
                     >
-                      <FiExternalLink /> VISIT
+                      <FiExternalLink /> {t({ id: 'KUNJUNGI', en: 'VISIT' })}
                     </a>
                   )}
                   {project.githubUrl && project.status === 'live' && (
@@ -114,12 +116,12 @@ export default function ProjectsMobile() {
                       rel="noopener noreferrer"
                       className={styles.actionBtnOutline}
                     >
-                      <FiGithub /> SOURCE
+                      <FiGithub /> {t({ id: 'SUMBER', en: 'SOURCE' })}
                     </a>
                   )}
                   {project.status === 'coming_soon' && (
                     <span className={styles.comingSoonText}>
-                      <FiClock /> IN DEVELOPMENT
+                      <FiClock /> {t({ id: 'DALAM PENGEMBANGAN', en: 'IN DEVELOPMENT' })}
                     </span>
                   )}
                 </div>

@@ -1,7 +1,9 @@
+export type LocalizedText = string | { id: string; en: string };
+
 export interface Profile {
   name: string;
-  title: string;
-  description: string;
+  title: LocalizedText;
+  description: LocalizedText;
   location: string;
   email: string;
   resumeUrl: string;
@@ -10,16 +12,16 @@ export interface Profile {
 export interface Project {
   id: string;
   title: string;
-  category: string;
-  description: string;
-  longDescription?: string;
+  category: LocalizedText;
+  description: LocalizedText;
+  longDescription?: LocalizedText;
   technologies: string[];
   liveUrl?: string;
   githubUrl?: string;
   featured: boolean;
   year: number;
   status: 'live' | 'coming_soon';
-  imageUrl?: string; // <-- Tambah ini
+  imageUrl?: string;
 }
 
 export interface Skill {
@@ -37,14 +39,15 @@ export interface SocialLink {
 
 export interface TimelineItem {
   year: string;
-  title: string;
+  title: LocalizedText;
   company: string;
-  description: string;
+  description: LocalizedText;
 }
 
 export interface NavigationItem {
-  label: string;
+  label: LocalizedText;
   href: string;
 }
 
 export type DeviceType = 'desktop' | 'mobile';
+export type Language = 'id' | 'en';

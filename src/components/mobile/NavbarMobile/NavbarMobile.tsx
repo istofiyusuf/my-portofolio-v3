@@ -4,12 +4,14 @@ import { useClickSound } from '@/hooks/useClickSound';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import styles from './NavbarMobile.module.css';
+import { useLanguage } from '@/hooks/LanguageContext';
 
 export default function NavbarMobile() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [transitionTarget, setTransitionTarget] = useState<string | null>(null);
   const { playClick } = useClickSound();
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -40,15 +42,20 @@ export default function NavbarMobile() {
 
   return (
     <>
-      <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
+      <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`} role="navigation">
         <div className={styles.container}>
-          <a href="#home" className={styles.logo}>
+          <a href="#home" className={styles.logo} aria-label="Home">
             <img src="/logo/logo.png" alt="Logo" className={styles.logoImage} />
           </a>
           <div className={styles.audioSection}>
             <HeaderAudio showDot={false} />
           </div>
-          <button className={styles.menuBtn} onClick={() => setIsOpen(!isOpen)}>
+          <button
+            className={styles.menuBtn}
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isOpen}
+          >
             [{isOpen ? 'X' : '='}]
           </button>
         </div>
@@ -85,9 +92,36 @@ export default function NavbarMobile() {
                   transition={{ delay: 0.1 + i * 0.08 }}
                 >
                   <span className={styles.menuNumber}>0{i + 1}.</span>
-                  {item.label}
+                  {t(item.label)}
                 </motion.a>
               ))}
+
+              <motion.div
+                className={styles.mobileLangSwitch}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.1 + navigationItems.length * 0.08 }}
+              >
+                <button
+                  onClick={() => {
+                    playClick();
+                    setLanguage('id');
+                  }}
+                  className={`${styles.langBtn} ${language === 'id' ? styles.activeLang : ''}`}
+                >
+                  ID
+                </button>
+                <span className={styles.langDivider}>/</span>
+                <button
+                  onClick={() => {
+                    playClick();
+                    setLanguage('en');
+                  }}
+                  className={`${styles.langBtn} ${language === 'en' ? styles.activeLang : ''}`}
+                >
+                  EN
+                </button>
+              </motion.div>
             </div>
           </motion.div>
         )}
@@ -103,7 +137,7 @@ export default function NavbarMobile() {
               exit={{ x: '-100%' }}
               transition={{ duration: 0.4, ease: [0.7, 0, 0.3, 1] }}
             >
-              <span className={styles.panelBracket}>{'{'}</span>
+              <span className={styles.panelBracket} aria-hidden="true">{'{'}</span>
             </motion.div>
 
             <motion.div
@@ -113,7 +147,7 @@ export default function NavbarMobile() {
               exit={{ x: '100%' }}
               transition={{ duration: 0.4, ease: [0.7, 0, 0.3, 1] }}
             >
-              <span className={styles.panelBracket}>{'}'}</span>
+              <span className={styles.panelBracket} aria-hidden="true">{'}'}</span>
             </motion.div>
 
             <motion.div

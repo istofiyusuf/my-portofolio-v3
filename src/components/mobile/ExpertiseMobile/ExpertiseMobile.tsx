@@ -3,17 +3,19 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { FiCloud, FiCode, FiCpu, FiLayout, FiServer, FiTrendingUp } from 'react-icons/fi';
 import styles from './ExpertiseMobile.module.css';
+import { useLanguage } from '@/hooks/LanguageContext';
 
 const categories = [
-  { key: 'frontend', label: 'FRONTEND', icon: FiLayout },
-  { key: 'backend', label: 'BACKEND', icon: FiServer },
-  { key: 'ai', label: 'AI', icon: FiCpu },
-  { key: 'design', label: 'DESIGN', icon: FiCode },
-  { key: 'marketing', label: 'SOCIAL & MARKETING', icon: FiTrendingUp },
-  { key: 'devops', label: 'DEVOPS', icon: FiCloud },
+  { key: 'frontend', label: { id: 'FRONTEND', en: 'FRONTEND' }, icon: FiLayout },
+  { key: 'backend', label: { id: 'BACKEND', en: 'BACKEND' }, icon: FiServer },
+  { key: 'ai', label: { id: 'AI', en: 'AI' }, icon: FiCpu },
+  { key: 'design', label: { id: 'DESAIN', en: 'DESIGN' }, icon: FiCode },
+  { key: 'marketing', label: { id: 'SOSIAL & PEMASARAN', en: 'SOCIAL & MARKETING' }, icon: FiTrendingUp },
+  { key: 'devops', label: { id: 'DEVOPS', en: 'DEVOPS' }, icon: FiCloud },
 ];
 
 export default function ExpertiseMobile() {
+  const { t } = useLanguage();
   return (
     <section id="expertise" className={styles.expertise}>
       <div className={styles.container}>
@@ -25,9 +27,9 @@ export default function ExpertiseMobile() {
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.5 }}
         >
-          <p className={styles.sectionTag}>03. EXPERTISE</p>
+          <p className={styles.sectionTag}>03. {t({ id: 'KEAHLIAN', en: 'EXPERTISE' })}</p>
           <h2 className={styles.sectionTitle}>
-            <span className={styles.bracket}>{'/*'}</span> Technical Skillset{' '}
+            <span className={styles.bracket}>{'/*'}</span> {t({ id: 'Kemampuan Teknis', en: 'Technical Skillset' })}{' '}
             <span className={styles.bracket}>{'*/'}</span>
           </h2>
         </motion.div>
@@ -54,8 +56,10 @@ export default function ExpertiseMobile() {
                     <CategoryIcon />
                   </div>
                   <div>
-                    <span className={styles.categoryLabel}>{category.label}</span>
-                    <span className={styles.categoryCount}>{categorySkills.length} SKILLS</span>
+                    <span className={styles.categoryLabel}>{t(category.label)}</span>
+                    <span className={styles.categoryLabel} style={{ fontSize: '0.6rem', color: '#555', marginLeft: '5px' }}>
+                      {categorySkills.length} SKILLS
+                    </span>
                   </div>
                 </div>
 
@@ -84,17 +88,17 @@ export default function ExpertiseMobile() {
         >
           <div className={styles.statItem}>
             <span className={styles.statNumber}>{'>'} 50+</span>
-            <span className={styles.statLabel}>Technologies</span>
+            <span className={styles.statLabel}>{t({ id: 'Teknologi', en: 'Technologies' })}</span>
           </div>
           <div className={styles.statDivider} />
           <div className={styles.statItem}>
             <span className={styles.statNumber}>{'>'} 5</span>
-            <span className={styles.statLabel}>Years Exp</span>
+            <span className={styles.statLabel}>{t({ id: 'Tahun Pengalaman', en: 'Years Exp' })}</span>
           </div>
           <div className={styles.statDivider} />
           <div className={styles.statItem}>
             <span className={styles.statNumber}>{'>'} 20+</span>
-            <span className={styles.statLabel}>Projects</span>
+            <span className={styles.statLabel}>{t({ id: 'Proyek', en: 'Projects' })}</span>
           </div>
         </motion.div>
       </div>

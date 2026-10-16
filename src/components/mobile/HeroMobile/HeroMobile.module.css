@@ -62,18 +62,21 @@
   left: 10px;
   right: -10px;
   bottom: -10px;
-  border: 1px solid #444;
+  border: 1px solid var(--color-accent);
   z-index: 0;
+  opacity: 0.3;
   animation: framePulse 3s ease-in-out infinite;
 }
 
 @keyframes framePulse {
   0%,
   100% {
-    border-color: #333;
+    border-color: var(--color-accent);
+    opacity: 0.3;
   }
   50% {
-    border-color: #555;
+    border-color: var(--color-accent);
+    opacity: 0.6;
   }
 }
 
@@ -91,7 +94,7 @@
 .statusDot {
   width: 5px;
   height: 5px;
-  background: #ffffff;
+  background: var(--color-accent);
   border-radius: 50%;
   animation: dotPulse 2s infinite;
 }
@@ -168,9 +171,9 @@
 
 .btn {
   padding: 12px 20px;
-  background: #ffffff;
+  background: var(--color-accent);
   color: #000000;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   font-family: var(--font-primary);
@@ -178,14 +181,14 @@
 }
 
 .btn:active {
-  background: #cccccc;
+  background: #ffffff;
   transform: scale(0.97);
 }
 
 .btnOutline {
   padding: 12px 20px;
-  border: 1px solid #333;
-  color: #ffffff;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   font-family: var(--font-primary);
@@ -193,7 +196,8 @@
 }
 
 .btnOutline:active {
-  border-color: #ffffff;
+  background: var(--color-accent);
+  color: #000000;
 }
 
 .code {
@@ -230,5 +234,5 @@
 .swipeLine {
   width: 1px;
   height: 30px;
-  background: linear-gradient(to bottom, #ffffff, transparent);
+  background: linear-gradient(to bottom, var(--color-accent), transparent);
 }

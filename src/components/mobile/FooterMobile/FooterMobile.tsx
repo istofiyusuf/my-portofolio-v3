@@ -9,6 +9,7 @@ import {
 } from 'react-icons/fi';
 import { SiDocker, SiJavascript, SiLinux, SiPython, SiReact, SiTypescript } from 'react-icons/si';
 import styles from './FooterMobile.module.css';
+import { useLanguage } from '@/hooks/LanguageContext';
 
 const socials = [
   { icon: FiGithub, url: 'https://github.com/istofiyusuf', label: 'GitHub' },
@@ -90,6 +91,7 @@ function TypingTech() {
 
 export default function FooterMobile() {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   const scrollToTop = () => {
     const homeSection = document.getElementById('home');
@@ -106,7 +108,7 @@ export default function FooterMobile() {
         {/* Brand */}
         <div className={styles.brand}>
           <span className={styles.logo}>{'{ IY }'}</span>
-          <p className={styles.tagline}>Fullstack Developer & Creative Engineer</p>
+          <p className={styles.tagline}>{t({ id: 'Fullstack Developer & Creative Engineer', en: 'Fullstack Developer & Creative Engineer' })}</p>
         </div>
 
         {/* Social Icons */}

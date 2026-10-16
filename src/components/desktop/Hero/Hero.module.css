@@ -157,18 +157,21 @@
   left: 12px;
   right: -12px;
   bottom: -12px;
-  border: 1px solid #333;
+  border: 1px solid var(--color-accent);
   z-index: 0;
+  opacity: 0.3;
   animation: framePulse 3s ease-in-out infinite;
 }
 
 @keyframes framePulse {
   0%,
   100% {
-    border-color: #333;
+    border-color: var(--color-accent);
+    opacity: 0.3;
   }
   50% {
-    border-color: #555;
+    border-color: var(--color-accent);
+    opacity: 0.6;
   }
 }
 
@@ -178,15 +181,15 @@
   gap: 8px;
   font-size: 0.65rem;
   letter-spacing: 0.2em;
-  color: #666;
+  color: var(--color-accent);
   padding: 8px 16px;
-  border: 1px solid #222;
+  border: 1px solid rgba(0, 255, 0, 0.2);
 }
 
 .statusDot {
   width: 6px;
   height: 6px;
-  background: #ffffff;
+  background: var(--color-accent);
   border-radius: 50%;
   animation: pulse 2s infinite;
 }

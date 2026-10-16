@@ -1,6 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useCallback, useEffect, useState } from 'react';
 import styles from './PageTransition.module.css';
+import { useLanguage } from '@/hooks/LanguageContext';
+import { navigationItems } from '@/data/profile';
 
 interface PageTransitionProps {
   children: React.ReactNode;
@@ -9,6 +11,7 @@ interface PageTransitionProps {
 export default function PageTransition({ children }: PageTransitionProps) {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [targetSection, setTargetSection] = useState<string | null>(null);
+  const { t } = useLanguage();
 
   // Fungsi untuk handle klik navigasi dengan animasi
   const navigateTo = useCallback(
@@ -39,8 +42,6 @@ export default function PageTransition({ children }: PageTransitionProps) {
 
   // Attach event listener ke semua link navigasi
   useEffect(() => {
-    const navLinks = document.querySelectorAll('a[href^="#"]');
-
     const handleClick = (e: Event) => {
       const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
       if (href && href !== '#') {
@@ -48,11 +49,30 @@ export default function PageTransition({ children }: PageTransitionProps) {
       }
     };
 
-    navLinks.forEach((link) => {
-      link.addEventListener('click', handleClick);
+    const attachListeners = () => {
+      const navLinks = document.querySelectorAll('a[href^="#"]');
+      navLinks.forEach((link) => {
+        link.removeEventListener('click', handleClick);
+        link.addEventListener('click', handleClick);
+      });
+    };
+
+    // Initial attach
+    attachListeners();
+
+    // Observe changes for lazy loaded components
+    const observer = new MutationObserver(() => {
+      attachListeners();
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
     });
 
     return () => {
+      observer.disconnect();
+      const navLinks = document.querySelectorAll('a[href^="#"]');
       navLinks.forEach((link) => {
         link.removeEventListener('click', handleClick);
       });
@@ -101,7 +121,12 @@ export default function PageTransition({ children }: PageTransitionProps) {
               transition={{ duration: 0.3, delay: 0.15 }}
             >
               <span className={styles.navLabel}>
-                {targetSection?.replace('#', '').toUpperCase()}
+                {(() => {
+                  const item = navigationItems.find((i) => i.href === targetSection);
+                  return item
+                    ? t(item.label).toUpperCase()
+                    : targetSection?.replace('#', '').toUpperCase();
+                })()}
               </span>
             </motion.div>
           </div>

@@ -4,12 +4,12 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import { FiCheckCircle, FiClock, FiExternalLink, FiGithub } from 'react-icons/fi';
 import styles from './Projects.module.css';
-
-// ... imports tetap
+import { useLanguage } from '@/hooks/LanguageContext';
 
 export default function Projects() {
   const [filter] = useState<'all' | 'live' | 'coming_soon'>('all');
   const [flippedId, setFlippedId] = useState<string | null>(null);
+  const { t } = useLanguage();
 
   const filteredProjects = projects.filter((p) => {
     if (filter === 'all') return true;
@@ -19,7 +19,15 @@ export default function Projects() {
   return (
     <section id="projects" className={styles.projects}>
       <div className={styles.container}>
-        {/* ... header & filter tetap ... */}
+        <SectionTransition>
+          <div className={styles.header}>
+            <p className={styles.sectionTag}>04. {t({ id: 'PROYEK', en: 'PROJECTS' })}</p>
+            <h2 className={styles.sectionTitle}>
+              <span className={styles.bracket}>{'/*'}</span> {t({ id: 'Pekerjaan Pilihan', en: 'Selected Works' })}{' '}
+              <span className={styles.bracket}>{'*/'}</span>
+            </h2>
+          </div>
+        </SectionTransition>
 
         <div className={styles.grid}>
           <AnimatePresence mode="wait">
@@ -53,7 +61,7 @@ export default function Projects() {
                           ) : (
                             <>
                               <FiClock />
-                              <span>COMING SOON</span>
+                              <span>{t({ id: 'SEGERA HADIR', en: 'COMING SOON' })}</span>
                             </>
                           )}
                         </div>
@@ -67,10 +75,10 @@ export default function Projects() {
                     </div>
                     <div className={styles.cardInfo}>
                       <div className={styles.cardMeta}>
-                        <span className={styles.cardCategory}>{project.category}</span>
+                        <span className={styles.cardCategory}>{t(project.category)}</span>
                         <span className={styles.cardYear}>{project.year}</span>
                       </div>
-                      <p className={styles.cardDesc}>{project.description}</p>
+                      <p className={styles.cardDesc}>{t(project.description)}</p>
                       <div className={styles.cardTech}>
                         {project.technologies.slice(0, 4).map((tech) => (
                           <span key={tech} className={styles.techTag}>
@@ -83,7 +91,7 @@ export default function Projects() {
                           </span>
                         )}
                       </div>
-                      <span className={styles.flipHint}>Click to see details {'->'}</span>
+                      <span className={styles.flipHint}>{t({ id: 'Klik untuk detail', en: 'Click to see details' })} {'->'}</span>
                     </div>
                   </div>
 
@@ -95,7 +103,7 @@ export default function Projects() {
                       </span>
                       <h3 className={styles.backTitle}>{project.title}</h3>
                       <p className={styles.backDesc}>
-                        {project.longDescription || project.description}
+                        {t(project.longDescription || project.description)}
                       </p>
                       <div className={styles.backTech}>
                         {project.technologies.map((tech) => (
@@ -113,7 +121,7 @@ export default function Projects() {
                             className={styles.actionBtn}
                             onClick={(e) => e.stopPropagation()}
                           >
-                            <FiExternalLink /> VISIT SITE
+                            <FiExternalLink /> {t({ id: 'KUNJUNGI SITUS', en: 'VISIT SITE' })}
                           </a>
                         )}
                         {project.githubUrl && project.status === 'live' && (
@@ -124,11 +132,11 @@ export default function Projects() {
                             className={styles.actionBtnOutline}
                             onClick={(e) => e.stopPropagation()}
                           >
-                            <FiGithub /> SOURCE CODE
+                            <FiGithub /> {t({ id: 'KODE SUMBER', en: 'SOURCE CODE' })}
                           </a>
                         )}
                       </div>
-                      <span className={styles.flipBack}>Click to flip back</span>
+                      <span className={styles.flipBack}>{t({ id: 'Klik untuk kembali', en: 'Click to flip back' })}</span>
                     </div>
                   </div>
                 </motion.article>

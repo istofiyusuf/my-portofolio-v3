@@ -56,6 +56,46 @@
   display: flex;
   gap: var(--space-xl);
   flex-shrink: 0;
+  align-items: center;
+}
+
+.langSwitch {
+  display: flex;
+  align-items: center;
+  background: #111111;
+  border: 1px solid #333333;
+  border-radius: 0px;
+  padding: 2px;
+  margin-left: 1rem;
+  gap: 2px;
+}
+
+.langBtn {
+  background: transparent;
+  border: none;
+  color: #777777;
+  font-family: var(--font-primary);
+  font-size: 0.65rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 0px;
+  transition: all 0.2s ease;
+}
+
+.langBtn:hover {
+  color: #ffffff;
+  background: #222222;
+}
+
+.activeLang {
+  background: #ffffff;
+  color: #000000;
+  font-weight: 700;
+}
+
+.langDivider {
+  display: none;
 }
 
 .navLink {

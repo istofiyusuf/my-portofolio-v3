@@ -2,6 +2,7 @@ import { profile } from '@/data/profile';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import styles from './Hero.module.css';
+import { useLanguage } from '@/hooks/LanguageContext';
 
 const staggerText = (text: string) => {
   return text.split('').map((char, i) => (
@@ -23,6 +24,8 @@ const staggerText = (text: string) => {
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start start', 'end start'],
@@ -52,7 +55,7 @@ export default function Hero() {
           {/* Kiri: Teks */}
           <motion.div className={styles.textCol} style={{ y }}>
             <p className={styles.tag}>
-              {'//'} {profile.title}
+              {'//'} {t(profile.title)}
             </p>
             <h1 className={styles.title}>
               <span className={styles.bracket}>{'{'}</span>
@@ -69,7 +72,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 2, duration: 0.6 }}
             >
-              {profile.description}
+              {t(profile.description)}
             </motion.p>
             <motion.div
               className={styles.cta}
@@ -78,10 +81,10 @@ export default function Hero() {
               transition={{ delay: 2.3, duration: 0.6 }}
             >
               <a href="#projects" className={styles.btn}>
-                {'>'} VIEW_PROJECTS()
+                {'>'} {t({ id: 'LIHAT_PROYEK', en: 'VIEW_PROJECTS' })}()
               </a>
               <a href="#contact" className={styles.btnOutline}>
-                {'>'} GET_IN_TOUCH()
+                {'>'} {t({ id: 'HUBUNGI', en: 'GET_IN_TOUCH' })}()
               </a>
             </motion.div>
             <motion.pre
@@ -92,7 +95,7 @@ export default function Hero() {
             >
               {`const dev = {
   name: "${profile.name}",
-  role: "${profile.title}",
+  role: "${t(profile.title)}",
   status: "available",
   location: "${profile.location}"
 };`}
@@ -134,7 +137,7 @@ export default function Hero() {
                 transition={{ duration: 2, repeat: Infinity }}
               >
                 <span className={styles.statusDot} />
-                AVAILABLE FOR WORK
+                {t({ id: 'TERSEDIA', en: 'AVAILABLE FOR WORK' })}
               </motion.div>
             </div>
           </motion.div>

@@ -12,6 +12,7 @@ import {
 } from 'react-icons/fi';
 import { SiDocker, SiLinux, SiNodedotjs, SiPython, SiReact, SiTypescript } from 'react-icons/si';
 import styles from './Footer.module.css';
+import { useLanguage } from '@/hooks/LanguageContext';
 
 const iconMap: Record<string, React.ComponentType> = {
   FiGithub,
@@ -88,6 +89,7 @@ function TypingTech() {
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -106,9 +108,10 @@ export default function Footer() {
               <span className={styles.bracket}>{'}'}</span>
             </a>
             <p className={styles.tagline}>
-              Fullstack Developer & Creative Engineer based in{' '}
-              <span className={styles.highlight}>Indonesia</span>. Building digital experiences that
-              matter.
+              {t({ 
+                id: 'Fullstack Developer & Creative Engineer berbasis di Indonesia. Membangun pengalaman digital yang bermakna.', 
+                en: 'Fullstack Developer & Creative Engineer based in Indonesia. Building digital experiences that matter.' 
+              })}
             </p>
             <div className={styles.location}>
               <span className={styles.locationDot} />
@@ -120,13 +123,13 @@ export default function Footer() {
           <div className={styles.navCol}>
             <h4 className={styles.colTitle}>
               <span className={styles.colNumber}>01.</span>
-              NAVIGATION
+              {t({ id: 'NAVIGASI', en: 'NAVIGATION' })}
             </h4>
             <div className={styles.navList}>
               {navigationItems.map((item) => (
                 <a key={item.href} href={item.href} className={styles.navLink}>
                   <span className={styles.navArrow}>{'->'}</span>
-                  {item.label}
+                  {t(item.label)}
                 </a>
               ))}
             </div>
@@ -136,7 +139,7 @@ export default function Footer() {
           <div className={styles.socialCol}>
             <h4 className={styles.colTitle}>
               <span className={styles.colNumber}>02.</span>
-              CONNECT
+              {t({ id: 'HUBUNGKAN', en: 'CONNECT' })}
             </h4>
             <div className={styles.socialList}>
               {socialLinks.map((link) => {
@@ -168,13 +171,16 @@ export default function Footer() {
             <div className={styles.quoteBox}>
               <span className={styles.quoteMark}>"</span>
               <p className={styles.quoteText}>
-                Every great digital experience starts with a single line of code and a bold vision.
+                {t({
+                  id: 'Setiap pengalaman digital yang hebat dimulai dengan satu baris kode dan visi yang berani.',
+                  en: 'Every great digital experience starts with a single line of code and a bold vision.'
+                })}
               </p>
               <div className={styles.quoteLine} />
             </div>
             <button className={styles.scrollTop} onClick={scrollToTop}>
               <FiArrowUp />
-              <span>BACK TO TOP</span>
+              <span>{t({ id: 'KEMBALI KE ATAS', en: 'BACK TO TOP' })}</span>
             </button>
           </div>
         </div>
@@ -190,7 +196,7 @@ export default function Footer() {
         <div className={styles.bottom}>
           <div className={styles.bottomLeft}>
             <span className={styles.copyright}>
-              &copy; {currentYear} Istofi Yusuf. All rights reserved.
+              &copy; {currentYear} Istofi Yusuf. {t({ id: 'Hak cipta dilindungi.', en: 'All rights reserved.' })}
             </span>
           </div>
           <div className={styles.bottomCenter}>
@@ -199,7 +205,7 @@ export default function Footer() {
           </div>
           <div className={styles.bottomRight}>
             <span className={styles.basedIn}>
-              BASED IN <span className={styles.highlight}>INDONESIA</span>
+              {t({ id: 'BERBASIS DI', en: 'BASED IN' })} <span className={styles.highlight}>INDONESIA</span>
             </span>
           </div>
         </div>

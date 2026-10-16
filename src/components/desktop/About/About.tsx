@@ -3,9 +3,11 @@ import { profile, timeline } from '@/data/profile';
 import { useRef } from 'react';
 import { FiCode, FiDownload, FiLayers, FiMail, FiMapPin } from 'react-icons/fi';
 import styles from './About.module.css';
+import { useLanguage } from '@/hooks/LanguageContext';
 
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useLanguage();
 
   return (
     <section id="about" ref={sectionRef} className={styles.about}>
@@ -13,9 +15,9 @@ export default function About() {
         {/* Section Header */}
         <SectionTransition>
           <div className={styles.header}>
-            <p className={styles.sectionTag}>02. ABOUT</p>
+            <p className={styles.sectionTag}>02. {t({ id: 'TENTANG', en: 'ABOUT' })}</p>
             <h2 className={styles.sectionTitle}>
-              <span className={styles.bracket}>{'/*'}</span> The Developer Behind The Code{' '}
+              <span className={styles.bracket}>{'/*'}</span> {t({ id: 'Pengembang Di Balik Kode', en: 'The Developer Behind The Code' })}{' '}
               <span className={styles.bracket}>{'*/'}</span>
             </h2>
           </div>
@@ -28,13 +30,14 @@ export default function About() {
               <div className={styles.bioCard}>
                 <div className={styles.cardHeader}>
                   <span className={styles.cardDot} />
-                  <span className={styles.cardLabel}>BIOGRAPHY</span>
+                  <span className={styles.cardLabel}>{t({ id: 'BIOGRAFI', en: 'BIOGRAPHY' })}</span>
                 </div>
-                <p className={styles.bioText}>{profile.description}</p>
+                <p className={styles.bioText}>{t(profile.description)}</p>
                 <p className={styles.bioText}>
-                  With a strong foundation in modern web technologies and a passion for clean
-                  architecture, I transform complex requirements into elegant, performant solutions.
-                  Every line of code is written with purpose and precision.
+                  {t({
+                    id: 'Dengan fondasi kuat dalam teknologi web modern dan hasrat untuk arsitektur yang bersih, saya mengubah persyaratan kompleks menjadi solusi yang elegan dan performan. Setiap baris kode ditulis dengan tujuan dan presisi.',
+                    en: 'With a strong foundation in modern web technologies and a passion for clean architecture, I transform complex requirements into elegant, performant solutions. Every line of code is written with purpose and precision.',
+                  })}
                 </p>
               </div>
             </SectionTransition>
@@ -45,7 +48,7 @@ export default function About() {
                 <div className={styles.infoCard}>
                   <FiMapPin className={styles.infoIcon} />
                   <div>
-                    <span className={styles.infoLabel}>LOCATION</span>
+                    <span className={styles.infoLabel}>{t({ id: 'LOKASI', en: 'LOCATION' })}</span>
                     <span className={styles.infoValue}>{profile.location}</span>
                   </div>
                 </div>
@@ -61,15 +64,15 @@ export default function About() {
                 <div className={styles.infoCard}>
                   <FiCode className={styles.infoIcon} />
                   <div>
-                    <span className={styles.infoLabel}>EXPERIENCE</span>
-                    <span className={styles.infoValue}>5+ Years</span>
+                    <span className={styles.infoLabel}>{t({ id: 'PENGALAMAN', en: 'EXPERIENCE' })}</span>
+                    <span className={styles.infoValue}>5+ {t({ id: 'Tahun', en: 'Years' })}</span>
                   </div>
                 </div>
                 <div className={styles.infoCard}>
                   <FiLayers className={styles.infoIcon} />
                   <div>
-                    <span className={styles.infoLabel}>PROJECTS</span>
-                    <span className={styles.infoValue}>20+ Completed</span>
+                    <span className={styles.infoLabel}>{t({ id: 'PROYEK', en: 'PROJECTS' })}</span>
+                    <span className={styles.infoValue}>20+ {t({ id: 'Selesai', en: 'Completed' })}</span>
                   </div>
                 </div>
               </div>
@@ -79,7 +82,7 @@ export default function About() {
             <SectionTransition delay={0.3}>
               <a href={profile.resumeUrl} className={styles.resumeBtn} download>
                 <FiDownload />
-                <span>DOWNLOAD RESUME</span>
+                <span>{t({ id: 'UNDUH RESUME', en: 'DOWNLOAD RESUME' })}</span>
                 <span className={styles.btnArrow}>{'->'}</span>
               </a>
             </SectionTransition>
@@ -91,7 +94,7 @@ export default function About() {
               <div className={styles.timelineCard}>
                 <div className={styles.cardHeader}>
                   <span className={styles.cardDot} />
-                  <span className={styles.cardLabel}>EXPERIENCE</span>
+                  <span className={styles.cardLabel}>{t({ id: 'PENGALAMAN', en: 'EXPERIENCE' })}</span>
                 </div>
 
                 <div className={styles.timeline}>
@@ -106,9 +109,9 @@ export default function About() {
                       {/* Konten */}
                       <div className={styles.timelineContent}>
                         <span className={styles.timelineYear}>{item.year}</span>
-                        <h4 className={styles.timelineTitle}>{item.title}</h4>
+                        <h4 className={styles.timelineTitle}>{t(item.title)}</h4>
                         <span className={styles.timelineCompany}>@ {item.company}</span>
-                        <p className={styles.timelineDesc}>{item.description}</p>
+                        <p className={styles.timelineDesc}>{t(item.description)}</p>
                       </div>
                     </div>
                   ))}
@@ -121,7 +124,10 @@ export default function About() {
               <div className={styles.quoteCard}>
                 <span className={styles.quoteIcon}>{'"'}</span>
                 <p className={styles.quoteText}>
-                  Clean code always looks like it was written by someone who cares.
+                  {t({
+                    id: 'Kode yang bersih selalu terlihat seperti ditulis oleh seseorang yang peduli.',
+                    en: 'Clean code always looks like it was written by someone who cares.',
+                  })}
                 </p>
                 <div className={styles.quoteLine} />
               </div>

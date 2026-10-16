@@ -14,6 +14,7 @@ import {
   FiTwitter,
 } from 'react-icons/fi';
 import styles from './ContactMobile.module.css';
+import { useLanguage } from '@/hooks/LanguageContext';
 
 const iconMap: Record<string, React.ComponentType> = {
   FiGithub,
@@ -28,6 +29,7 @@ export default function ContactMobile() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const [copied, setCopied] = useState<string | null>(null);
+  const { t } = useLanguage();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -56,12 +58,12 @@ export default function ContactMobile() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <p className={styles.sectionTag}>05. CONTACT</p>
+          <p className={styles.sectionTag}>05. {t({ id: 'KONTAK', en: 'CONTACT' })}</p>
           <h2 className={styles.sectionTitle}>
-            <span className={styles.bracket}>{'/*'}</span> Let's Connect{' '}
+            <span className={styles.bracket}>{'/*'}</span> {t({ id: 'Mari Terhubung', en: "Let's Connect" })}{' '}
             <span className={styles.bracket}>{'*/'}</span>
           </h2>
-          <p className={styles.sectionDesc}>Reach out via WhatsApp, email, or social media.</p>
+          <p className={styles.sectionDesc}>{t({ id: 'Hubungi melalui WhatsApp, email, atau media sosial.', en: 'Reach out via WhatsApp, email, or social media.' })}</p>
         </motion.div>
 
         {/* WhatsApp Button */}
@@ -76,7 +78,7 @@ export default function ContactMobile() {
           transition={{ delay: 0.1 }}
         >
           <FiMessageCircle />
-          <span>CHAT VIA WHATSAPP</span>
+          <span>{t({ id: 'CHAT VIA WHATSAPP', en: 'CHAT VIA WHATSAPP' })}</span>
           <FiArrowRight />
         </motion.a>
 
@@ -91,15 +93,15 @@ export default function ContactMobile() {
           {submitted ? (
             <div className={styles.success}>
               <FiCheck className={styles.successIcon} />
-              <h3>Message Sent!</h3>
+              <h3>{t({ id: 'Pesan Terkirim!', en: 'Message Sent!' })}</h3>
               <button className={styles.sendAgain} onClick={() => setSubmitted(false)}>
-                {'>'} SEND AGAIN
+                {'>'} {t({ id: 'KIRIM LAGI', en: 'SEND AGAIN' })}
               </button>
             </div>
           ) : (
             <form onSubmit={handleSubmit}>
               <div className={styles.formGroup}>
-                <label>{'>'} YOUR_NAME</label>
+                <label>{'>'} {t({ id: 'NAMA_ANDA', en: 'YOUR_NAME' })}</label>
                 <input
                   name="name"
                   value={formData.name}
@@ -109,7 +111,7 @@ export default function ContactMobile() {
                 />
               </div>
               <div className={styles.formGroup}>
-                <label>{'>'} YOUR_EMAIL</label>
+                <label>{'>'} {t({ id: 'EMAIL_ANDA', en: 'YOUR_EMAIL' })}</label>
                 <input
                   type="email"
                   name="email"
@@ -120,18 +122,18 @@ export default function ContactMobile() {
                 />
               </div>
               <div className={styles.formGroup}>
-                <label>{'>'} YOUR_MESSAGE</label>
+                <label>{'>'} {t({ id: 'PESAN_ANDA', en: 'YOUR_MESSAGE' })}</label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Tell me about your project..."
+                  placeholder={t({ id: 'Ceritakan tentang proyek Anda...', en: 'Tell me about your project...' })}
                   rows={3}
                   required
                 />
               </div>
               <button type="submit" className={styles.submitBtn}>
-                <FiSend /> SEND VIA WHATSAPP
+                <FiSend /> {t({ id: 'KIRIM VIA WHATSAPP', en: 'SEND VIA WHATSAPP' })}
               </button>
             </form>
           )}

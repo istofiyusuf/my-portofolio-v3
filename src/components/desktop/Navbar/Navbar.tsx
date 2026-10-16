@@ -2,10 +2,12 @@ import HeaderAudio from '@/components/shared/HeaderAudio/HeaderAudio';
 import { navigationItems } from '@/data/profile';
 import { useEffect, useState } from 'react';
 import styles from './Navbar.module.css';
+import { useLanguage } from '@/hooks/LanguageContext';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('#home');
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,9 +27,9 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
+    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`} role="navigation">
       <div className={styles.container}>
-        <a href="#home" className={styles.logo}>
+        <a href="#home" className={styles.logo} aria-label="Home">
           {/* Logo Image */}
           <img src="/logo/logo.png" alt="Logo" className={styles.logoImage} />
           <span className={styles.logoText}>{'>'} ISTOFI_YUSUF</span>
@@ -41,10 +43,26 @@ export default function Navbar() {
               key={item.href}
               href={item.href}
               className={`${styles.navLink} ${activeSection === item.href ? styles.active : ''}`}
+              aria-current={activeSection === item.href ? 'page' : undefined}
             >
-              {item.label}
+              {t(item.label)}
             </a>
           ))}
+          <div className={styles.langSwitch}>
+            <button
+              onClick={() => setLanguage('id')}
+              className={`${styles.langBtn} ${language === 'id' ? styles.activeLang : ''}`}
+            >
+              ID
+            </button>
+            <span className={styles.langDivider}>/</span>
+            <button
+              onClick={() => setLanguage('en')}
+              className={`${styles.langBtn} ${language === 'en' ? styles.activeLang : ''}`}
+            >
+              EN
+            </button>
+          </div>
         </div>
       </div>
     </nav>

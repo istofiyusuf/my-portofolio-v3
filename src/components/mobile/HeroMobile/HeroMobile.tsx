@@ -2,6 +2,7 @@ import { profile } from '@/data/profile';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import styles from './HeroMobile.module.css';
+import { useLanguage } from '@/hooks/LanguageContext';
 
 // Typing effect component
 function TypingText({ text, startDelay = 0 }: { text: string; startDelay?: number }) {
@@ -44,6 +45,7 @@ function TypingText({ text, startDelay = 0 }: { text: string; startDelay?: numbe
 }
 
 export default function HeroMobile() {
+  const { t } = useLanguage();
   return (
     <section id="home" className={styles.hero}>
       <div className={styles.container}>
@@ -77,7 +79,7 @@ export default function HeroMobile() {
               transition={{ duration: 2.5, repeat: Infinity }}
             >
               <span className={styles.statusDot} />
-              AVAILABLE FOR WORK
+              {t({ id: 'TERSEDIA', en: 'AVAILABLE FOR WORK' })}
             </motion.div>
           </div>
         </motion.div>
@@ -90,7 +92,7 @@ export default function HeroMobile() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.5 }}
           >
-            {'//'} {profile.title}
+            {'//'} {t(profile.title)}
           </motion.p>
 
           {/* NAMA DENGAN TYPING EFFECT DI SINI */}
@@ -104,7 +106,7 @@ export default function HeroMobile() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.5, duration: 0.5 }}
           >
-            {profile.description}
+            {t(profile.description)}
           </motion.p>
 
           <motion.div
@@ -114,10 +116,10 @@ export default function HeroMobile() {
             transition={{ delay: 1.8, duration: 0.5 }}
           >
             <a href="#projects" className={styles.btn}>
-              {'>'} PROJECTS
+              {'>'} {t({ id: 'PROYEK', en: 'PROJECTS' })}
             </a>
             <a href="#contact" className={styles.btnOutline}>
-              {'>'} CONTACT
+              {'>'} {t({ id: 'KONTAK', en: 'CONTACT' })}
             </a>
           </motion.div>
 

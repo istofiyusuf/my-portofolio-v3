@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+<<<<<<< HEAD
 Sitemap: https://istofiyusuf.dpdns.org/sitemap.xml
+=======
+Sitemap: https://istofiyusuf.dpdns.org/sitemap.xml
+>>>>>>> 29b0ea9 (change usable language)

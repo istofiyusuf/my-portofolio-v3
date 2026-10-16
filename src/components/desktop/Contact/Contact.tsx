@@ -15,6 +15,7 @@ import {
   FiTwitter,
 } from 'react-icons/fi';
 import styles from './Contact.module.css';
+import { useLanguage } from '@/hooks/LanguageContext';
 
 const iconMap: Record<string, React.ComponentType> = {
   FiGithub: FiGithub,
@@ -33,6 +34,7 @@ export default function Contact() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [copied, setCopied] = useState<string | null>(null);
+  const { t } = useLanguage();
 
   // Kirim ke WhatsApp
   const handleWhatsAppSubmit = (e: FormEvent) => {
@@ -64,14 +66,16 @@ export default function Contact() {
         {/* Section Header */}
         <SectionTransition>
           <div className={styles.header}>
-            <p className={styles.sectionTag}>05. CONTACT</p>
+            <p className={styles.sectionTag}>05. {t({ id: 'KONTAK', en: 'CONTACT' })}</p>
             <h2 className={styles.sectionTitle}>
-              <span className={styles.bracket}>{'/*'}</span> Let's Connect{' '}
+              <span className={styles.bracket}>{'/*'}</span> {t({ id: 'Mari Terhubung', en: "Let's Connect" })}{' '}
               <span className={styles.bracket}>{'*/'}</span>
             </h2>
             <p className={styles.sectionDesc}>
-              Have a project in mind? Let's build something extraordinary together. Reach out via
-              WhatsApp, email, or social media.
+              {t({
+                id: 'Punya proyek dalam pikiran? Mari kita bangun sesuatu yang luar biasa bersama. Hubungi melalui WhatsApp, email, atau media sosial.',
+                en: "Have a project in mind? Let's build something extraordinary together. Reach out via WhatsApp, email, or social media."
+              })}
             </p>
           </div>
         </SectionTransition>
@@ -156,9 +160,9 @@ export default function Contact() {
               <div className={styles.formCard}>
                 <div className={styles.formHeader}>
                   <span className={styles.formDot} />
-                  <span className={styles.formLabel}>QUICK MESSAGE</span>
+                  <span className={styles.formLabel}>{t({ id: 'PESAN CEPAT', en: 'QUICK MESSAGE' })}</span>
                   <span className={styles.formBadge}>
-                    <FiMessageCircle /> VIA WHATSAPP
+                    <FiMessageCircle /> {t({ id: 'VIA WHATSAPP', en: 'VIA WHATSAPP' })}
                   </span>
                 </div>
 
@@ -169,17 +173,17 @@ export default function Contact() {
                     animate={{ opacity: 1, y: 0 }}
                   >
                     <FiCheck className={styles.successIcon} />
-                    <h3>Message Sent!</h3>
-                    <p>WhatsApp has been opened with your message.</p>
+                    <h3>{t({ id: 'Pesan Terkirim!', en: 'Message Sent!' })}</h3>
+                    <p>{t({ id: 'WhatsApp telah dibuka dengan pesan Anda.', en: 'WhatsApp has been opened with your message.' })}</p>
                     <button className={styles.sendAgain} onClick={() => setSubmitted(false)}>
-                      {'>'} SEND AGAIN
+                      {'>'} {t({ id: 'KIRIM LAGI', en: 'SEND AGAIN' })}
                     </button>
                   </motion.div>
                 ) : (
                   <form className={styles.form} onSubmit={handleWhatsAppSubmit}>
                     <div className={styles.formGroup}>
                       <label className={styles.label} htmlFor="name">
-                        {'>'} YOUR_NAME
+                        {'>'} {t({ id: 'NAMA_ANDA', en: 'YOUR_NAME' })}
                       </label>
                       <input
                         type="text"
@@ -194,7 +198,7 @@ export default function Contact() {
                     </div>
                     <div className={styles.formGroup}>
                       <label className={styles.label} htmlFor="email">
-                        {'>'} YOUR_EMAIL
+                        {'>'} {t({ id: 'EMAIL_ANDA', en: 'YOUR_EMAIL' })}
                       </label>
                       <input
                         type="email"
@@ -209,7 +213,7 @@ export default function Contact() {
                     </div>
                     <div className={styles.formGroup}>
                       <label className={styles.label} htmlFor="message">
-                        {'>'} YOUR_MESSAGE
+                        {'>'} {t({ id: 'PESAN_ANDA', en: 'YOUR_MESSAGE' })}
                       </label>
                       <textarea
                         id="message"
@@ -217,14 +221,14 @@ export default function Contact() {
                         value={formData.message}
                         onChange={handleChange}
                         className={styles.textarea}
-                        placeholder="Tell me about your project..."
+                        placeholder={t({ id: 'Ceritakan tentang proyek Anda...', en: 'Tell me about your project...' })}
                         rows={4}
                         required
                       />
                     </div>
                     <button type="submit" className={styles.submitBtn}>
                       <FiSend />
-                      <span>SEND VIA WHATSAPP</span>
+                      <span>{t({ id: 'KIRIM VIA WHATSAPP', en: 'SEND VIA WHATSAPP' })}</span>
                       <FiArrowRight className={styles.submitArrow} />
                     </button>
                   </form>
