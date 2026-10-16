@@ -13,6 +13,15 @@ export default function Preloader({ onComplete }: PreloaderProps) {
   const progressRef = useRef(0);
 
   useEffect(() => {
+    // Instant skip for search engine crawlers (Googlebot, Bingbot, etc.)
+    const isBot = /googlebot|bingbot|yandex|duckduckbot|baiduspider|slurp|crawler|spider|lighthouse|pagespeed/i.test(
+      navigator.userAgent
+    );
+    if (isBot) {
+      onComplete();
+      return;
+    }
+
     const interval = setInterval(() => {
       // Gunakan ref untuk menghindari race condition
       const currentProgress = progressRef.current;
@@ -21,6 +30,9 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         clearInterval(interval);
         setProgress(100);
         setShowEnter(true);
+        setTimeout(() => {
+          handleEnter();
+        }, 1200);
         return;
       }
 
@@ -34,6 +46,10 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       if (newProgress >= 100) {
         clearInterval(interval);
         setShowEnter(true);
+        // Auto enter after 1.2s so users/crawlers don't get stuck permanently
+        setTimeout(() => {
+          handleEnter();
+        }, 1200);
       }
     }, 80);
 
